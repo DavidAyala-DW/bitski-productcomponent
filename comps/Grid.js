@@ -12,7 +12,7 @@ const Grid = ({ products }) => {
         {products.map((item) => (
           <a href={item.purchaseLink} key={item.id}>
             <div
-              LclassName="flex justify-center items-center mb-4"
+              className="flex justify-center items-center mb-4"
               
             >
               <product-viewer
