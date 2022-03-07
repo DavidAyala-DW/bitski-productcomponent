@@ -12,6 +12,7 @@ const Navbar = () => {
               src={logoFileName}
               width={257}
               height={35}
+              alt={""}
             />
         </div>
       </div>
