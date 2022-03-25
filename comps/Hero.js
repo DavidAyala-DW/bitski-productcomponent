@@ -64,7 +64,7 @@ const Hero = () => {
               <div className="hero-cta-info--info pl-0 md:pl-4 font-bold flex items-center">
                 <span>Live drop in Progress</span>
                 <div className="pl-4 pt-[9px] animate-pulse">
-                  <Image src="/orbe.webp" width={20} height={20} />
+                  <Image src="/orbe.webp" width={20} height={20}  alt="" />
                 </div>
               </div>
             </div>
@@ -75,12 +75,13 @@ const Hero = () => {
               src={productFileName}
               width={336}
               height={336}
+              alt=""
             />
           </div>
         </div>
         <div className="main-image md:absolute flex justify-center md:h-[460px] w-0 md:w-full">
           <div className="container z-10 hidden md:block">
-            <Image src={foregroundFileName} width={390} height={heroHeight} />
+            <Image src={foregroundFileName} width={390} height={heroHeight}  alt=""/>
           </div>
         </div>
       </section>

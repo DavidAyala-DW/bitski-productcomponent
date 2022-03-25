@@ -12,7 +12,7 @@ const Footer = () => {
         </div>
         <div className="flex order-1 md:order-2">
           <p className="mr-2">Powered by</p>
-          <Image src="/bitski.svg" width={120} height={34} />
+          <Image src="/bitski.svg" width={120} height={34} alt=""/>
         </div>
         <div className="order-3 mt-4 md:mt-0">
           <a href={tcLink}>T&C</a>
