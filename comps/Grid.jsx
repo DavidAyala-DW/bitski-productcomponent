@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import CustomProductViewer from "./CustomProductViewer";
 
 const gridTitle = process.env.NEXT_PUBLIC_GRID_TITLE;
 const secondaryColor = process.env.NEXT_PUBLIC_SECONDARY_COLOR;
@@ -34,7 +35,8 @@ const Grid = ({ products}) => {
 
     const obj = {
       limit: productsPerView,
-      offset: type == "pagination" ? paged * productsPerView : 0
+      offset: type == "pagination" ? paged * productsPerView : 0,
+      all : true
     };
     
     if(activeFilter != "ALL" && activeFilter != "SOLD" && activeFilter != ""){
@@ -62,7 +64,8 @@ const Grid = ({ products}) => {
 
     const obj = {
       limit: 100,
-      offset: 0
+      offset: 0,
+      all : true
     };
 
     if(activeFilter != "ALL" && activeFilter != "SOLD" && activeFilter != ""){
@@ -146,135 +149,130 @@ const Grid = ({ products}) => {
   
   return (
 
-    <section id="grid" className="px-5 md:px-20 max-w-[1440px] w-full">
-      {/* <h1 className="mt-8 mb-8 text-3xl text-center">{gridTitle}</h1> */}
+    <>
+      <section id="grid" className="px-5 md:px-20 max-w-[1440px] w-full">
+          {/* <h1 className="mt-8 mb-8 text-3xl text-center">{gridTitle}</h1> */}
 
-      <div className="flex flex-col space-y-5 max-w-[1440px] mx-auto w-full my-5">
+          <div className="flex flex-col space-y-5 max-w-[1440px] mx-auto w-full my-5">
 
-        <h2>Filter Collection</h2>
+            <h2>Filter Collection</h2>
 
-        <div className="flex w-full justify-center">
+            <div className="flex w-full justify-center">
 
-          <div className="flex items-center w-full space-x-3">
+              <div className="flex items-center w-full space-x-3">
 
-            {
-              activeFirstProducts && (
+                {
+                  activeFirstProducts && (
 
-                filters.map((filter,index) => (
+                    filters.map((filter,index) => (
 
-                  <div 
-                    key={index}
-                    className="p-5 min-w-[118px] cursor-pointer min-h-[118px] max-h-max max-w-max flex flex-col items-center justify-center bg-[#DBDBDB]"
-                    onClick={handleClickFilter}
-                    id={filter.value}
-                  >
-  
-                    <p
-                      className="text-black cursor-pointer text-xs font-medium"
-                      onClick={handleClickFilter}
-                      id={filter.value}
-                    >
-                      {filter.text}
-                    </p>
-  
-                  </div>
-  
-                ))
-
-              )
-
-            }
-
-          </div>
-
-        </div>
-
-      </div>
+                      <div 
+                        key={index}
+                        className="p-5 min-w-[118px] cursor-pointer min-h-[118px] max-h-max max-w-max flex flex-col items-center justify-center bg-[#DBDBDB]"
+                        onClick={handleClickFilter}
+                        id={filter.value}
+                      >
       
-      {
-        productListActive && (
-          <div className="container w-full grid grid-cols-2 md:grid-cols-3 gap-8">
+                        <p
+                          className="text-black cursor-pointer text-xs font-medium"
+                          onClick={handleClickFilter}
+                          id={filter.value}
+                        >
+                          {filter.text}
+                        </p>
+      
+                      </div>
+      
+                    ))
 
-            {
+                  )
 
-              productList.map((item) => (
+                }
 
-                <a href={item.purchaseLink} key={item.id}>
-                  <div
-                    className="flex justify-center items-center mb-4"
-                  >
-                    <product-viewer
-                      title-color={secondaryColor}
-                      price-color="#fbfbfb"
-                      product-id={item.id}
-                      display-type="minimal"
-                      currency="USD"
-                    ></product-viewer>
-                  </div>
-                </a>
-              ))
-
-            }
-
-          </div>
-        )
-      }
-
-      {
-
-        (spinnerActive) && (
-
-          <div className="sk-cube-grid mx-auto my-5">
-            <div className="sk-cube sk-cube1"></div>
-            <div className="sk-cube sk-cube2"></div>
-            <div className="sk-cube sk-cube3"></div>
-            <div className="sk-cube sk-cube4"></div>
-            <div className="sk-cube sk-cube5"></div>
-            <div className="sk-cube sk-cube6"></div>
-            <div className="sk-cube sk-cube7"></div>
-            <div className="sk-cube sk-cube8"></div>
-            <div className="sk-cube sk-cube9"></div>
-          </div>
-
-        )
-
-      }
-
-      {
-        productListActive && (
-          <div className="flex flex-col space-y-5 items-center max-w-[151px] mx-auto my-5 w-full">
-
-            <div className="flex flex-col items-start w-full space-y-1">
-    
-              <p className="text-[10px] font-normal text-center text-black">
-                {`SHOWIMG ${productList.length} OF ${totalProducts} PRODUCTS`}
-              </p>
-    
-              <div className="h-1 w-full bg-gray-300">
-                <div id="progressbar" className="h-1 w-[12%] bg-gray-600"></div>
               </div>
-    
+
             </div>
-    
-            {
-              loadMorePages && (
-    
-                <button
-                className="bg-gray-300 text-black px-4 py-2 text-center"
-                onClick={handleClickPagination}
-                >
-                  LOAD MORE
-                </button>
-    
-              )
-            }
-    
+
           </div>
+          
+          {
+            productListActive && (
+              <div className="container w-full grid grid-cols-2 md:grid-cols-4 gap-8">
 
-        )
-      }
+                {
 
-    </section>
+                  productList.map((item) => (
+                    <CustomProductViewer product={item} key={item.id}/>
+                  ))
+
+                }
+
+              </div>
+            )
+          }
+
+          {
+
+            (spinnerActive) && (
+
+              <div className="sk-cube-grid mx-auto my-5">
+                <div className="sk-cube sk-cube1"></div>
+                <div className="sk-cube sk-cube2"></div>
+                <div className="sk-cube sk-cube3"></div>
+                <div className="sk-cube sk-cube4"></div>
+                <div className="sk-cube sk-cube5"></div>
+                <div className="sk-cube sk-cube6"></div>
+                <div className="sk-cube sk-cube7"></div>
+                <div className="sk-cube sk-cube8"></div>
+                <div className="sk-cube sk-cube9"></div>
+              </div>
+
+            )
+
+          }
+
+          {
+            productListActive && (
+              <div className="flex flex-col space-y-5 items-center max-w-[151px] mx-auto my-5 w-full">
+
+                <div className="flex flex-col items-start w-full space-y-1">
+        
+                  <p className="text-[10px] font-normal text-center text-black">
+                    {`SHOWIMG ${productList.length} OF ${totalProducts} PRODUCTS`}
+                  </p>
+        
+                  <div className="h-1 w-full bg-gray-300">
+                    <div id="progressbar" className="h-1 w-[12%] bg-gray-600"></div>
+                  </div>
+        
+                </div>
+        
+                {
+                  loadMorePages && (
+        
+                    <button
+                    className="bg-gray-300 text-black px-4 py-2 text-center"
+                    onClick={handleClickPagination}
+                    >
+                      LOAD MORE
+                    </button>
+        
+                  )
+                }
+        
+              </div>
+
+            )
+          }
+
+        </section>
+
+        {/* <div className="max-w-[312px] mx-auto">
+          <CustomProductViewer product={products[4]} />
+        </div> */}
+        
+    </>
+    
   );
 };
 
