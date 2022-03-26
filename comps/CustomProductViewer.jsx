@@ -127,7 +127,7 @@ function CustomProductViewer({ product }) {
         
         <a>
 
-          <div className='relative max-h-[312px] w-full block max-w-full transition-transform duration-200 ease-[ease-in-out] hover:scale-105'>
+          <div className='relative min-h-[312px] max-h-[312px] w-full block max-w-full transition-transform duration-200 ease-[ease-in-out] hover:scale-105'>
 
             {
               productInfo?.tokenMetadata?.animation_url != undefined ? (
