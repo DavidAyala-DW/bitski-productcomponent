@@ -17,14 +17,14 @@ const Marquee = () => {
   return (
     <>
       <div className="text-3xl">
-        <div className="primary-color h-[37px] md:h-[50px]">
+        <div className="primary-color bg-primary h-[37px] md:h-[50px]">
           <div className={styles.marquee}>
             <div className={styles.track}>
               <div className={styles.content}>{res}</div>
             </div>
           </div>
         </div>
-        <div className="secondary-color  h-[37px] md:h-[50px]">
+        <div className="secondary-color bg-secondary h-[37px] md:h-[50px]">
           <div className={styles.marquee}>
             <div className={styles.trackReverse}>
               <div className={styles.content}>{res} </div>

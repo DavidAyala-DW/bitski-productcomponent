@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'gold': '#ffd400',
-        'prussian': '#001958',
+        'primary': 'var(--color-primary)',
+        'secondary': 'var(--color-secondary)',
       },
     },
   },

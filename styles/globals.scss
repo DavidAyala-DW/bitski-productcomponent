@@ -1,10 +1,30 @@
+:root{
+  --color-primary: ""
+  --color-secondary: ""
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import "./mixins";
+
 html {
   @apply scroll-smooth;
 }
+
+body {
+  font-weight: 400;
+  font-family: $bodyFontLocal;
+  background-color: $background_color;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: $headlineFontLocal;
+}
+
+@include fontFamily($headlineFontLocal,$bodyFontLocal,$headlineFontGoogleURL,$headlineFontGoogleFont,$bodyFontGoogleURL,$bodyFontGoogleFont);
+$color-primary : changePrimaryColor();
 
 .hero-info {
   opacity: 0;
@@ -21,47 +41,10 @@ html {
   -webkit-transition: 1; /* Safari */
 }
 
-@font-face {
-  font-family: "Interstate";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/interstate/interstate-regular.woff") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Interstate";
-  font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/interstate/interstate-bold.woff") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Interstate";
-  font-style: normal;
-  font-weight: 200;
-  src: url("/fonts/interstate/interstate-light.woff") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Interstate";
-  font-style: normal;
-  font-weight: 900;
-  src: url("/fonts/interstate/interstate-black.woff") format("woff");
-  font-display: swap;
-}
-
-body {
-  font-weight: 400;
-  font-family: "Interstate";
-}
-
 .text-outline {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #fff;
+  -webkit-text-stroke-color: rgb(190, 167, 167);
 }
 
 

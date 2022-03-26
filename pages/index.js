@@ -4,51 +4,59 @@ import Hero from "../comps/Hero";
 import Grid from "../comps/Grid";
 import Image from 'next/image'
 import Script from 'next/script'
-
-import {
-  differenceInMinutes, 
-  differenceInHours, 
-  differenceInSeconds,
-  differenceInDays,
-  differenceInMonths,
-  formatDuration,
-  intervalToDuration
-  
-} from "date-fns";
-
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 const Home = ({products}) => {
 
   useEffect(() => {
 
-    setInterval(() => {
+    const primaryColor = {
 
-      const lastDate = new Date("2022-03-24T23:00:00Z").getTime();
-      const currentDate = new Date();
+      Brand : "#FF3567",
+      Purple : "#7A73FC",
+      Yellow: "#FCC02A",
+      Blue : "#1586F6",
+      Green: "#12AC12",
+      Orange: "#F8981D",
+      Red: "#F54A4A",
+      Cyan: "#1BBDD4",
+      Brown: "#7A5648",
+      Grey: "#93979F",
+      Black: "#000000",
+      White: "#FFFFFF"
 
-      let duration = intervalToDuration({
-        start: lastDate, 
-        end: currentDate,
-      })
+    };
 
-      const {years,months,days,hours,minutes,seconds} = duration;
-      let countDown = "";
+    const secondaryColor = {
 
-      years>0 && (years>=10 ? countDown+= years+"yrs " : countDown+= 0+years+"yrs ");
-      months>0 && (months>=10 ? countDown+= months+"mo " : countDown+= 0+months+"mo ");
-      days>=10 ? countDown+= days+"d " : countDown+= 0+days+"d ";
-      hours>=10 ? countDown+= hours+"h " : countDown+= 0+hours+"h ";
-      minutes>=10 ? countDown+= minutes+"m " : countDown+= 0+minutes+"m ";
-      seconds>=10 ? countDown+= seconds+"s " : countDown+= 0+seconds+"s ";
+      Brand : "rgba(255, 155, 180, 0.15)",
+      Purple : "rgba(172, 107, 173, 0.15)",
+      Yellow: "rgba(249, 237, 55, 0.15)",
+      Blue : "rgba(71, 142, 204, 0.15)",
+      Green: "rgba(138, 196, 75, 0.15)",
+      Orange: "rgba(248, 152, 29, 0.15)",
+      Red: "rgba(240, 68, 56, 0.15)",
+      Cyan: "rgba(27, 189, 212, 0.15)",
+      Brown: "rgba(122, 86, 72, 0.15)",
+      Grey: "rgba(135, 146, 161, 0.15)",
+      Black: "rgba(0, 0, 0, 0.5)",
+      White: "rgba(255, 255, 255, 0.25)"
+      
+    };
 
-    },1000)
+    const currentPrimaryColor = primaryColor[process.env.NEXT_PUBLIC_PRIMARY_COLOR] ?? process.env.NEXT_PUBLIC_PRIMARY_COLOR;
+    const currentSecondaryColor = secondaryColor[process.env.NEXT_PUBLIC_SECONDARY_COLOR] ?? process.env.NEXT_PUBLIC_SECONDARY_COLOR;
+
+    document.documentElement.style.setProperty('--color-primary', currentPrimaryColor )
+    document.documentElement.style.setProperty('--color-secondary', currentSecondaryColor )
 
   }, []);
 
   return (
     <>
+
       <Head>
+
         <title>NFT Landings demo | Home</title>
         <meta name="keywords" content="ninjas" />
         

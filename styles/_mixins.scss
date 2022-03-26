@@ -1,0 +1,191 @@
+@mixin fontFamily($headline,$body,$HGoogleURL,$HGoogleFont,$BGoogleURL,$BGoogleFont){
+
+  @if ($BGoogleFont == "" or $BGoogleURL == "") or  ( $HGoogleFont == "" or  $HGoogleURL == "") {
+
+    @if $headline == "Interstate" or $body == "Interstate" {
+
+      @font-face {
+        font-family: "Interstate";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/interstate/interstate-regular.woff") format("woff");
+        font-display: swap;
+      }
+  
+      @font-face {
+        font-family: "Interstate";
+        font-style: normal;
+        font-weight: 600;
+        src: url("/fonts/interstate/interstate-bold.woff") format("woff");
+        font-display: swap;
+      }
+  
+      @font-face {
+        font-family: "Interstate";
+        font-style: normal;
+        font-weight: 200;
+        src: url("/fonts/interstate/interstate-light.woff") format("woff");
+        font-display: swap;
+      }
+  
+      @font-face {
+        font-family: "Interstate";
+        font-style: normal;
+        font-weight: 900;
+        src: url("/fonts/interstate/interstate-black.woff") format("woff");
+        font-display: swap;
+      }
+  
+    }
+  
+    @if $headline == "NeueMachina" or $body == "NeueMachina" {
+  
+      @font-face {
+        font-family: "NeueMachina";
+        font-style: normal;
+        font-weight: 600;
+        src: url("/fonts/neue/NeueMachina-Medium.woff") format("woff");
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: "NeueMachina";
+        font-style: normal;
+        font-weight: 200;
+        src: url("/fonts/neue/NeueMachina-Ultralight.woff") format("woff");
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: "NeueMachina";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/neue/NeueMachina-Regular.woff") format("woff");
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: "NeueMachina";
+        font-style: normal;
+        font-weight: 900;
+        src: url("/fonts/neue/NeueMachina-Ultrabold.woff") format("woff");
+        font-display: swap;
+      }
+  
+    }
+  
+    @if $headline == "Matter SQ" or $body == "Matter SQ" {
+  
+      @font-face {
+        font-family: "Matter SQ";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/matter_sq/Matter SQ Regular.woff") format("woff");
+        font-display: swap;
+      }
+  
+    }
+  
+    @if $headline == "Pangram Sans" or $body == "Pangram Sans" {
+      
+      @font-face {
+        font-family: "Pangram Sans";
+        font-style: normal;
+        font-weight: 200;
+        src: url("/fonts/Pangram_Sans/PPPangramSansRounded-Thin.otf");
+      }
+      
+      @font-face {
+        font-family: "Pangram Sans";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/Pangram_Sans/PPPangramSansRounded-CompactRegular.otf");
+      }
+  
+      @font-face {
+        font-family: "Pangram Sans";
+        font-style: normal;
+        font-weight: 600;
+        src: url("/fonts/Pangram_Sans/PPPangramSansRounded-Medium.otf");
+      }
+      
+      @font-face {
+        font-family: "Pangram Sans";
+        font-style: normal;
+        font-weight: 900;
+        src: url("/fonts/Pangram_Sans/PPPangramSansRounded-Bold.otf");
+      }
+  
+    }
+  
+    @if $headline == "Eiko" or $body == "Eiko"{
+  
+      @font-face {
+        font-family: "Eiko";
+        font-style: normal;
+        font-weight: 200;
+        src: url("/fonts/eiko/PPEiko-Thin.otf");
+      }
+  
+      @font-face {
+        font-family: "Eiko";
+        font-style: normal;
+        font-weight: 300;
+        src: url("/fonts/eiko/PPEiko-LightItalic.otf");
+      }
+  
+      @font-face {
+        font-family: "Eiko";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/eiko/PPEiko-Medium.otf");
+      }
+  
+      @font-face {
+        font-family: "Eiko";
+        font-style: normal;
+        font-weight: 600;
+        src: url("/fonts/eiko/PPEiko-Medium.otf");
+      }
+  
+      @font-face {
+        font-family: "Eiko";
+        font-style: normal;
+        font-weight: 900;
+        src: url("/fonts/eiko/PPEiko-Heavy.otf");
+      }
+  
+    }
+  
+    @if $headline == "Acherus" or $body == "Acherus" {
+  
+      @font-face {
+        font-family: "Acherus";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/Acherus/Horizon Type - AcherusGrotesque-Regular.otf");
+      }
+  
+    }
+
+  }
+
+  @if not( $HGoogleFont == "" ) and  not($HGoogleURL == "") {
+    @import url($headlineFontGoogleURL);
+    h1,h2,h3,h4,h5{
+      font-family: $headlineFontGoogleFont;
+    }
+  }
+
+  @if not( $BGoogleFont == "" ) and not($BGoogleURL == "") {
+    @import url($bodyFontGoogleURL);
+    body{
+      font-family: $bodyFontGoogleFont;
+    }
+  }
+
+}
+
+@function changePrimaryColor(){
+  @return blue;
+}
