@@ -14,7 +14,7 @@ function CustomProductViewer({ product }) {
   const [inventory, setInventory] = useState("");
   const [saleTypeStatus, setSaleTypeStatus] = useState("normal");
 
-  const handleCountDown =  function (salesEndAt,interval){
+  const handleCountDown = function (salesEndAt){
 
     const lastDate = new Date(salesEndAt).getTime();
     const currentDate = new Date();
@@ -35,14 +35,14 @@ function CustomProductViewer({ product }) {
     seconds>=10 ? countDown+= seconds+"s " : countDown+= 0+seconds+"s ";
 
     const liveAt = new Date(productInfo.liveAt).getTime();
+    
+    console.log([years,months,days,hours,minutes,seconds].every(element => element <= 0));
 
     if([years,months,days,hours,minutes,seconds].every(element => element <= 0)){
 
       setSaleTypeStatus("reload");
-      setCountDown("Checking status ...")
-      interval.clearInterval();
-      
-      return;
+      return "Checking status ..."
+
     } 
 
     if(currentDate > liveAt && productInfo.auctions[0].info.bids.length>0){
@@ -72,6 +72,7 @@ function CustomProductViewer({ product }) {
       return childUNIX == lastBid;
   
     } );
+    console.log(saleType,saleTypeStatus);
     return lastPrice[0].amount;
   
   }
@@ -95,9 +96,11 @@ function CustomProductViewer({ product }) {
 
       if(productInfo.auctions[0].info.ended === false){
 
-        interval = setInterval(() => {
-          setCountDown(countDownFunction(productInfo.salesEndAt,interval) )
-        }, 1000);
+        if(saleTypeStatus != "reload"){
+          interval = setInterval(() => {
+            setCountDown(countDownFunction(productInfo.salesEndAt,interval) )
+          }, 1000);
+        }
 
       }else{
         setCountDown("Closed")
@@ -117,7 +120,32 @@ function CustomProductViewer({ product }) {
 
     return () => clearInterval(interval); // Always clear intervals and events in useeffect to evit event propagation
 
-  }, [productInfo,countDownFunction]);
+  }, [productInfo,countDownFunction,saleTypeStatus]);
+
+  useEffect(() => {
+
+    if(saleTypeStatus === "reload" ){
+
+      setTimeout( () => {
+
+        async function reloadComponent(){
+
+          const request = await fetch(process.env.NEXT_PUBLIC_API_KEY+`/${product.id}`);
+          const response = await request.json();
+          setProductInfo(response.product);
+          setSaleTypeStatus("normal");
+
+        }
+        
+        reloadComponent();
+
+
+
+      }, 60000);
+
+    }
+
+  }, [saleTypeStatus,product]);
 
   return (
 
@@ -175,18 +203,18 @@ function CustomProductViewer({ product }) {
                   {saleType}
                 </>
 
-              ) : saleTypeStatus == "liveAt" ? (
+              ) : saleTypeStatus == "liveAt" || saleTypeStatus == "reload" ? (
 
                 <>
 
                   Live auction
 
-                  <span className='ml-2 h-2.5 w-2.5 rounded-full bg-[#ff3567] animate-pulse transition-all block'>
+                  <span className='ml-2 h-2.5 mt-1.5 w-2.5 rounded-full bg-[#ff3567] animate-pulse transition-all block'>
                   </span>
 
                 </>
 
-              ) : saleTypeStatus == "closeUp" ? (
+              ) : saleTypeStatus == "closeUp" || saleTypeStatus == "reload" ? (
                 <>
                   Live auction
                 </>
@@ -249,7 +277,7 @@ function CustomProductViewer({ product }) {
                 <>
                   ${productInfo?.prices[0]?.price}
                 </>
-              ) : saleTypeStatus == "normal" && (countDown != "Closed" || productInfo.auctions[0].info.bids.length == 0) ? (
+              ) : (saleTypeStatus == "normal" || saleTypeStatus == "reload") && (countDown != "Closed" || productInfo.auctions[0].info.bids.length == 0) ? (
                 <>
                   ${productInfo.auctions[0].info.minBid}
                 </>
