@@ -1,7 +1,9 @@
 import {useState, useEffect} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { hash } from '../helpers';
 import CustomProductViewer from "./CustomProductViewer";
+
 
 const gridTitle = process.env.NEXT_PUBLIC_GRID_TITLE;
 const secondaryColor = process.env.NEXT_PUBLIC_SECONDARY_COLOR;
@@ -34,9 +36,9 @@ const Grid = ({ products}) => {
     const url = new URL(process.env.NEXT_PUBLIC_API_KEY);
 
     const obj = {
+      all : true,
       limit: productsPerView,
       offset: type == "pagination" ? paged * productsPerView : 0,
-      all : true
     };
     
     if(activeFilter != "ALL" && activeFilter != "SOLD" && activeFilter != ""){
@@ -54,6 +56,8 @@ const Grid = ({ products}) => {
     const request = await fetch(url);
     const response = await request.json();
     const {products} = response;
+    console.log(request);
+    console.log(response);
     return products;
   
   }
@@ -63,9 +67,9 @@ const Grid = ({ products}) => {
     const url = new URL(process.env.NEXT_PUBLIC_API_KEY);
 
     const obj = {
+      all : true,
       limit: 100,
       offset: 0,
-      all : true
     };
 
     if(activeFilter != "ALL" && activeFilter != "SOLD" && activeFilter != ""){
@@ -135,7 +139,8 @@ const Grid = ({ products}) => {
 
   useEffect(() => {
   
-    if(activeFilter!= ""){
+    if(activeFilter != ""){
+
       setSpinnerActive(true);
       setProductListActive(false);
       setPaged(0);
@@ -143,6 +148,7 @@ const Grid = ({ products}) => {
       setTotalProducts(100);
       setLoadMorePages(true);
       handleRequestAndPagination("filter");
+
     }
     
   }, [activeFilter]);
@@ -150,16 +156,16 @@ const Grid = ({ products}) => {
   return (
 
     <>
-      <section id="grid" className="px-5 md:px-20 max-w-[1440px] w-full">
+      <section id="grid" className="px-5 md:px-20 max-w-[1440px] mx-auto w-full">
           {/* <h1 className="mt-8 mb-8 text-3xl text-center">{gridTitle}</h1> */}
 
           <div className="flex flex-col space-y-5 max-w-[1440px] mx-auto w-full my-5">
 
             <h2>Filter Collection</h2>
 
-            <div className="flex w-full justify-center">
+            <div className="flex w-full">
 
-              <div className="flex items-center w-full space-x-3">
+              <div className="w-full max-w-3xl grid grid-cols-2 gap-5 place-items-center md:grid-cols-4 lg:grid-cols-6">
 
                 {
                   activeFirstProducts && (
@@ -197,12 +203,12 @@ const Grid = ({ products}) => {
           
           {
             productListActive && (
-              <div className="container w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="container mx-auto w-full flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8">
 
                 {
 
                   productList.map((item) => (
-                    <CustomProductViewer product={item} key={item.id}/>
+                    <CustomProductViewer product={item} key={hash(item.id)}/>
                   ))
 
                 }

@@ -1,9 +1,7 @@
 import React,{useState, useEffect, useCallback} from 'react'
 import Image from "next/image";
 import Link from "next/link";
-import {
-  intervalToDuration
-} from "date-fns";
+import {intervalToDuration} from "date-fns";
 
 
 function CustomProductViewer({ product }) {
@@ -36,8 +34,6 @@ function CustomProductViewer({ product }) {
 
     const liveAt = new Date(productInfo.liveAt).getTime();
     
-    console.log([years,months,days,hours,minutes,seconds].every(element => element <= 0));
-
     if([years,months,days,hours,minutes,seconds].every(element => element <= 0)){
 
       setSaleTypeStatus("reload");
@@ -72,7 +68,7 @@ function CustomProductViewer({ product }) {
       return childUNIX == lastBid;
   
     } );
-    console.log(saleType,saleTypeStatus);
+
     return lastPrice[0].amount;
   
   }
@@ -153,36 +149,39 @@ function CustomProductViewer({ product }) {
 
       <Link href={productInfo?.purchaseLink} passHref>
         
-        <a>
+        <a className='w-full relative pb-[calc(100%*1)] max-h-[312px]'>
 
-          <div className='relative min-h-[312px] max-h-[312px] w-full block max-w-full transition-transform duration-200 ease-[ease-in-out] hover:scale-105'>
+          <div className="absolute inset-0 w-full flex flex-col justify-center items-center">
 
-            {
-              productInfo?.tokenMetadata?.animation_url != undefined ? (
+            <div className='relative w-full h-full flex max-h-full justify-center max-w-full transition-transform duration-200 ease-[ease-in-out] md:hover:scale-105'>
 
-                <video loop muted playsInline autoPlay  className='object-cover h-full min-h-[312px] min-w-full  max-h-[312px] object-center w-full rounded-xl' >
+              {
+                productInfo?.tokenMetadata?.animation_url != undefined ? (
 
-                  <source src={productInfo.tokenMetadata.animation_url} />
-                  <source src={productInfo.tokenMetadata.image} />
-                  <p>Your browser Dont support videos</p>
-                  
-                </video>
+                  <video loop muted playsInline autoPlay  className='object-cover h-full min-w-full max-h-full object-center w-full rounded-xl  mx-auto' >
 
-              ) :
+                    <source src={productInfo.tokenMetadata.animation_url} />
+                    <source src={productInfo.tokenMetadata.image} />
+                    <p>Your browser Dont support videos</p>
+                    
+                  </video>
 
-              (
+                ) :
 
-                <Image
-                  className='object-cover h-full min-h-[312px] max-h-[312px] object-center w-full rounded-xl'
-                  src={productInfo?.tokenMetadata?.image}
-                  alt={productInfo?.tokenMetadata?.title}
-                  width={312}
-                  height={312}
-                />
+                (
 
-              )
+                  <Image
+                    className='object-cover h-full w-full object-center rounded-xl'
+                    src={productInfo?.tokenMetadata?.image}
+                    alt={productInfo?.tokenMetadata?.title}
+                    layout="fill"
+                  />
 
-            }
+                )
+
+              }
+
+            </div>       
 
           </div>
 
