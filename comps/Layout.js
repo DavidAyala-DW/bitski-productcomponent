@@ -5,7 +5,6 @@ import Footer from "./Footer";
 const Layout = ({ children }) => {
   return (
     <div className="mx-auto w-full">
-
       <div>
         <Navbar />
         {children}

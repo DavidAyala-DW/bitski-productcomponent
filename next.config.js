@@ -18,5 +18,13 @@ module.exports = {
       $bodyFontGoogleFont: "${process.env.NEXT_PUBLIC_GOOGLEFONT_BOY_FONT_FAMILY}";
       $color-primary: ${process.env.NEXT_PUBLIC_PRIMARY_COLOR};
     `,
-  }
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"]
+    });
+
+    return config;
+  },
 }
