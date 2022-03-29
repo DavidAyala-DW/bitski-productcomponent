@@ -189,3 +189,55 @@
 @function changePrimaryColor(){
   @return blue;
 }
+
+@function standardModeBG(){
+
+  @if $standardMode == "dark"   {
+    @return black;
+  }
+
+  @if $standardMode == "light" {
+    @return white;
+  }
+
+  @return black;
+
+}
+
+@function standardModeText(){
+
+  @if $standardMode == "dark"   {
+    @return white;
+  }
+
+  @if $standardMode == "light" {
+    @return black;
+  }
+
+  @return white;
+
+}
+
+@function backgroundColor(){
+
+  @if $background_color != "no-selected" {
+    @return $background_color;
+  }
+
+  @return standardModeBG();
+
+}
+
+@function filterLogo(){
+
+  @if $standardMode == "dark" {
+    @return invert(1);
+  }
+
+  @if $standardMode == "light" {
+    @return invert(0);
+  }
+
+  @return invert(1);
+
+}

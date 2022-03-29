@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'standard' : 'var(--standard-mode)',
         'primary': 'var(--color-primary)',
         'secondary': 'var(--color-secondary)',
       },

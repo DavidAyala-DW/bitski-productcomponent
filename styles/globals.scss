@@ -16,15 +16,24 @@ html {
 body {
   font-weight: 400;
   font-family: $bodyFontLocal;
-  background-color: $background_color;
+  background-color: standardModeBG();
+  color: standardModeText();
 }
+
 
 h1,h2,h3,h4,h5{
   font-family: $headlineFontLocal;
 }
 
 @include fontFamily($headlineFontLocal,$bodyFontLocal,$headlineFontGoogleURL,$headlineFontGoogleFont,$bodyFontGoogleURL,$bodyFontGoogleFont);
-$color-primary : changePrimaryColor();
+
+body{
+  background-color: backgroundColor();
+}
+
+.logo{
+  filter: filterLogo();
+}
 
 .hero-info {
   opacity: 0;
@@ -41,12 +50,19 @@ $color-primary : changePrimaryColor();
   -webkit-transition: 1; /* Safari */
 }
 
-.text-outline {
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: rgb(190, 167, 167);
-}
+// .text-outline {
+//   -webkit-text-fill-color: transparent;
+//   -webkit-text-stroke-width: 2px;
+//   // -webkit-text-stroke-color: rgb(190, 167, 167);
+// }
 
+.marqee2{
+
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-primary);
+
+}
 
 .sk-cube-grid {
   width: 120px;
@@ -57,7 +73,7 @@ $color-primary : changePrimaryColor();
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: #333;
+  background-color: standardModeText();
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
           animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 

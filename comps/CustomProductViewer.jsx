@@ -41,8 +41,20 @@ function CustomProductViewer({ product }) {
 
     } 
 
-    if(currentDate > liveAt && productInfo.auctions[0].info.bids.length>0){
-      setSaleTypeStatus("liveAt");
+    if( productInfo.auctions.length != 0 ){
+
+      if(currentDate > liveAt && productInfo.auctions[0].info.bids.length>0){
+        setSaleTypeStatus("liveAt");
+      }
+
+    }
+
+    if( [years,months,days].every(element => element <= 0)  && hours<=1 ){
+
+      if(currentDate > liveAt && productInfo.auctions[0].info.bids.length>0){
+        setSaleTypeStatus("closeUp");
+      }
+      
     }
 
     return countDown;
@@ -80,7 +92,8 @@ function CustomProductViewer({ product }) {
       LIMITED_EDITION : "Limited edition",
       AUCTION : "Auction",
       OFF_CHAIN_AUCTION : "Auction",
-      OPEN_CHAIN_AUCTION : "Auction"
+      OPEN_CHAIN_AUCTION : "Auction",
+      OPEN_EDITION : "Open edition"
   
     }
 
@@ -88,9 +101,9 @@ function CustomProductViewer({ product }) {
 
     let interval;
 
-    if(saleTypes[productInfo.saleType] == "Auction"){
+    if(saleTypes[productInfo.saleType] == "Auction" || saleTypes[productInfo.saleType] == "Open edition"){
 
-      if(productInfo.auctions[0].info.ended === false){
+      if(productInfo?.auctions[0]?.info?.ended === false || (saleTypes[productInfo.saleType] == "Open edition" && new Date(productInfo.salesEndAt).getTime() >  new Date().getTime())){
 
         if(saleTypeStatus != "reload"){
           interval = setInterval(() => {
@@ -191,7 +204,7 @@ function CustomProductViewer({ product }) {
 
       <section className='w-full flex flex-col items-start'>
 
-        <div className={`flex w-full justify-between  border-black  text-black ${saleTypeStatus == "liveAt"? "text-[#ff3567] border-[#ff3567]" : ""}  ${saleTypeStatus == "closeUp" ? "bg-[#ff3567] border-[#ff3567] text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
+        <div className={`flex w-full justify-between border-standard ${saleTypeStatus == "liveAt"? "text-[#ff3567] border-[#ff3567]" : ""}  ${saleTypeStatus == "closeUp" ? "bg-[#ff3567] border-[#ff3567] text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
 
           <p className='flex items-center'>
 
@@ -213,7 +226,7 @@ function CustomProductViewer({ product }) {
 
                 </>
 
-              ) : saleTypeStatus == "closeUp" || saleTypeStatus == "reload" ? (
+              ) : saleTypeStatus == "closeUp" ? (
                 <>
                   Live auction
                 </>
@@ -225,7 +238,7 @@ function CustomProductViewer({ product }) {
 
           <p>
             {
-              saleType === "Auction" ? (
+              saleType === "Auction" || saleType === "Open edition"  ? (
 
                 <>
                   {countDown}
