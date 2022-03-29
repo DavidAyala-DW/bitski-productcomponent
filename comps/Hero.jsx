@@ -51,6 +51,7 @@ const Hero = () => {
 
                   <Image
                     src={"/hero_image.png"}
+                    priority={true}
                     className="w-full !min-h-0 !h-auto lg:!max-w-[530px]"
                     alt="hero_image.png"
                     width={530}

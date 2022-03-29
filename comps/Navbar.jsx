@@ -16,6 +16,7 @@ const Navbar = () => {
 
             <Image
               src={logoFileName}
+              priority={true}
               className={"logo"}
               height={47}
               width={120}

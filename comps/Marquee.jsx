@@ -54,7 +54,7 @@ const Marquee = () => {
 
           <div className={styles.marquee}>
             <div className={styles.track}>
-              <div className={styles.content + ` transition duration-75 ease-linear scroll1`}>{res}</div>
+              <div className={styles.content + ` transition ease-linear scroll1`}>{res}</div>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ const Marquee = () => {
         <div className="secondary-color marqee2 h-[37px] md:h-[50px]">
           <div className={styles.marquee + " flex justify-center"}>
             <div className={styles.trackReverse}>
-              <div className={styles.content + ` transition duration-75 ease-linear scroll2`}>{res} </div>
+              <div className={styles.content + ` transition ease-linear scroll2`}>{res} </div>
             </div>
           </div>
         </div>
