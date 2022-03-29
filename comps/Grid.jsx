@@ -5,8 +5,8 @@ import { hash } from '../helpers';
 import CustomProductViewer from "./CustomProductViewer";
 
 
-const gridTitle = process.env.NEXT_PUBLIC_GRID_TITLE;
-const secondaryColor = process.env.NEXT_PUBLIC_SECONDARY_COLOR;
+// const gridTitle = process.env.NEXT_PUBLIC_GRID_TITLE;
+// const secondaryColor = process.env.NEXT_PUBLIC_SECONDARY_COLOR;
 
 const Grid = ({ products}) => {
 
