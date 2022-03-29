@@ -56,8 +56,6 @@ const Grid = ({ products}) => {
     const request = await fetch(url);
     const response = await request.json();
     const {products} = response;
-    console.log(request);
-    console.log(response);
     return products;
   
   }
@@ -156,10 +154,9 @@ const Grid = ({ products}) => {
   return (
 
     <>
-      <section id="grid" className="px-5 md:px-20 max-w-[1440px] mx-auto w-full">
-          {/* <h1 className="mt-8 mb-8 text-3xl text-center">{gridTitle}</h1> */}
-
-          <div className="flex flex-col space-y-5 max-w-[1440px] mx-auto w-full my-5">
+      <section id="grid" className="px-5 md:px-20 max-w-[1440px] mx-auto w-full my-10">
+        
+          <div className="flex-col space-y-5 max-w-[1440px] mx-auto w-full hidden">
 
             <h2>Filter Collection</h2>
 
@@ -180,7 +177,7 @@ const Grid = ({ products}) => {
                       >
       
                         <p
-                          className="text-black cursor-pointer text-xs font-medium"
+                          className="cursor-pointer text-xs font-medium"
                           onClick={handleClickFilter}
                           id={filter.value}
                         >
@@ -243,7 +240,7 @@ const Grid = ({ products}) => {
 
                 <div className="flex flex-col items-start w-full space-y-1">
         
-                  <p className="text-[10px] font-normal text-center text-black">
+                  <p className="text-[10px] font-normal text-center">
                     {`SHOWIMG ${productList.length} OF ${totalProducts} PRODUCTS`}
                   </p>
         

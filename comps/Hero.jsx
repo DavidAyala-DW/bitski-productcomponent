@@ -21,20 +21,47 @@ const Hero = () => {
   return (
     <>
 
-      <section className="h-[681px] w-full bg-black">
+      <section className="h-[681px] w-full">
 
         <div className="h-full mx-auto relative max-w-[1440px] overflow-hidden">
 
           <div className="absolute top-0 right-0 w-max h-max ml-auto">  
 
-            {/* <Image
-              className="fill-red-400"
-              src={"/hero_grid.svg"}
-              layout="fill"
-              alt="/hero_grid"
-            /> */}
-
             <HeroGrid className="stroke-primary w-full h-max opacity-30" />
+
+          </div>
+
+          <div className="absolute top-0 px-5 md:px-20 right-0 w-full h-max ml-auto z-20 mb-5" id="hero_content">
+
+              <div className="lg:pt-[108px] w-full h-full flex flex-col space-y-10 lg:space-y-0 lg:flex-row items-center lg:items-start justify-between">
+
+                <div className="flex flex-col space-y-5 lg:space-y-9 mt-[124px] max-w-[610px]">
+
+                  <h1 className="font-bold text-2xl lg:text-[40px] xl:text-[55px] lg:leading-[62.26px]">
+                    Exclusive NFTs of your favorite athletes
+                  </h1>
+
+                  <p>
+                    We deliver utility to fans across the physical and digital worlds through thoughtfully sourced products and their digital twins.
+                  </p>
+
+                </div>
+
+                <div className="max-w-[320px] md:max-w-[360px] mx-auto lg:max-w-[530px] relative h-max w-full">
+
+                  <Image
+                    src={"/hero_image.png"}
+                    className="w-full !min-h-0 !h-auto lg:!max-w-[530px]"
+                    alt="hero_image.png"
+                    width={530}
+                    height={570}
+                    layout={"responsive"}
+                    objectFit="contain"
+                  />
+
+                </div>
+
+              </div>
 
           </div>
 
