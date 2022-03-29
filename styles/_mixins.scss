@@ -241,3 +241,17 @@
   @return invert(1);
 
 }
+
+@function filterLogoBitski(){
+
+  @if $standardMode == "dark" {
+    @return invert(0);
+  }
+
+  @if $standardMode == "light" {
+    @return invert(1);
+  }
+
+  @return invert(0);
+
+}
