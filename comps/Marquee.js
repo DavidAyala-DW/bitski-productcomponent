@@ -49,7 +49,7 @@ const Marquee = () => {
         }
       </style>
 
-      <div className="text-3xl max-w-[2500px] mx-auto">
+      <div className="text-2xl md:text-3xl max-w-[2500px] mx-auto">
         <div className="primary-color text-primary  h-[37px] md:h-[50px]">
 
           <div className={styles.marquee}>
