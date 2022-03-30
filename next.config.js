@@ -1,6 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
+    layoutRaw: true,
     domains: [
       "cdn.bitskistatic.com",
       "www.bitski.com"

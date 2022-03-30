@@ -3,6 +3,7 @@ import Hero from "../comps/Hero";
 import Grid from "../comps/Grid";
 import {useEffect} from "react";
 import { assignColors } from "../helpers";
+import Main from "../comps/Main";
 
 const Home = ({products}) => {
 
@@ -24,6 +25,8 @@ const Home = ({products}) => {
 
       <Grid products={products}/>
 
+      <Main />
+      
     </>
   );
 

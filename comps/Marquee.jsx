@@ -36,18 +36,17 @@ const Marquee = () => {
   return (
     <>
 
-      <style jsx>
-        {
-          `
+      <style jsx>{`
+
             .scroll1 {
               transform: translateX(-${scroll*0.5}px);
             }
+
             .scroll2 {
               transform: translateX(${scroll*0.5}px);
             }
-          `
-        }
-      </style>
+
+      `}</style>
 
       <div className="text-2xl md:text-3xl max-w-[2500px] mx-auto">
         <div className="primary-color text-primary  h-[37px] md:h-[50px]">

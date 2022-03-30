@@ -255,3 +255,13 @@
   @return invert(0);
 
 }
+
+@function liveActionColor(){
+
+  @if --color-primary != "white" and --color-primary != "#FFFFFF" and --color-primary != "#000000" and --color-primary != "black" {
+    @return var(--color-primary);
+  }@else{
+    @return #ff3567;
+  }
+
+}

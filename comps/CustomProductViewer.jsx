@@ -204,7 +204,7 @@ function CustomProductViewer({ product }) {
 
       <section className='w-full flex flex-col items-start'>
 
-        <div className={`flex w-full justify-between border-standard ${saleTypeStatus == "liveAt"? "text-[#ff3567] border-[#ff3567]" : ""}  ${saleTypeStatus == "closeUp" ? "bg-[#ff3567] border-[#ff3567] text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
+        <div className={`flex w-full justify-between border-standard ${saleTypeStatus == "liveAt"? "liveActionColor" : ""}  ${saleTypeStatus == "closeUp" ? "closeUP text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
 
           <p className='flex items-center'>
 
@@ -221,7 +221,7 @@ function CustomProductViewer({ product }) {
 
                   Live auction
 
-                  <span className='ml-2 h-2.5 mt-1.5 w-2.5 rounded-full bg-[#ff3567] animate-pulse transition-all block'>
+                  <span className='ml-2 h-2.5 mt-1.5 w-2.5 rounded-full liveActionBg animate-pulse transition-all block'>
                   </span>
 
                 </>

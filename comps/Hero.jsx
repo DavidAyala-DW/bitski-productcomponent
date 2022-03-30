@@ -41,7 +41,7 @@ const Hero = () => {
                     Exclusive NFTs of your favorite athletes
                   </h1>
 
-                  <p>
+                  <p className="max-w-[536px]">
                     We deliver utility to fans across the physical and digital worlds through thoughtfully sourced products and their digital twins.
                   </p>
 
