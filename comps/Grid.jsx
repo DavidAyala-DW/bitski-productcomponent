@@ -269,10 +269,6 @@ const Grid = ({ products}) => {
           }
 
         </section>
-
-        {/* <div className="max-w-[312px] mx-auto">
-          <CustomProductViewer product={products[4]} />
-        </div> */}
         
     </>
     
