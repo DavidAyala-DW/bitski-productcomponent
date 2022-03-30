@@ -1,21 +1,11 @@
 import Image from "next/image";
 import Marquee from "./Marquee";
 import HeroGrid from "../public/hero_grid.svg";
-const titleFirstLine = process.env.NEXT_PUBLIC_HERO_TITLE_FIRST_LINE;
-const titleSecondLine = process.env.NEXT_PUBLIC_HERO_TITLE_SECOND_LINE;
-const subtitle = process.env.NEXT_PUBLIC_HERO_SUBTITLE;
-const description = process.env.NEXT_PUBLIC_HERO_DESCRIPTION;
-const backgroundFileName =
-  "/" + process.env.NEXT_PUBLIC_HERO_BACKGROUND_FILE_NAME;
-let backgroundMobileFileName =
-  "/" + process.env.NEXT_PUBLIC_HERO_BACKGROUND_MOBILE_FILE_NAME;
-const foregroundFileName =
-  "/" + process.env.NEXT_PUBLIC_HERO_FOREGROUND_FILE_NAME;
-const productFileName = "/" + process.env.NEXT_PUBLIC_HERO_PRODUCT_FILE_NAME;
 
-// if (backgroundMobileFileName == "" || backgroundMobileFileName == undefined) {
-//   backgroundMobileFileName = backgroundFileName;
-// }
+
+const title = process.env.NEXT_PUBLIC_HERO_TITLE ?? "";
+const description = process.env.NEXT_PUBLIC_HERO_DESCRIPTION ?? "";
+const image = "/".concat(process.env.NEXT_PUBLIC_HERO_IMAGE) ?? "";
 
 const Hero = () => {
   return (
@@ -38,11 +28,11 @@ const Hero = () => {
                 <div className="flex flex-col space-y-5 lg:space-y-9 mt-[124px] max-w-[610px]">
 
                   <h1 className="font-bold text-2xl lg:text-[40px] xl:text-[55px] lg:leading-[62.26px]">
-                    Exclusive NFTs of your favorite athletes
+                    {title}
                   </h1>
 
                   <p className="max-w-[536px]">
-                    We deliver utility to fans across the physical and digital worlds through thoughtfully sourced products and their digital twins.
+                    {description}
                   </p>
 
                 </div>
@@ -50,7 +40,7 @@ const Hero = () => {
                 <div className="max-w-[320px] md:max-w-[360px] mx-auto lg:max-w-[530px] relative h-max w-full">
 
                   <Image
-                    src={"/hero_image.png"}
+                    src={image}
                     priority={true}
                     className="w-full !min-h-0 !h-auto lg:!max-w-[530px]"
                     alt="hero_image.png"

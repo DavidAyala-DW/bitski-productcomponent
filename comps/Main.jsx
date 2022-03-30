@@ -7,7 +7,7 @@ import Discord from "../public/discord.svg";
 import Tiktok from "../public/tiktok.svg";
 import Telegram from "../public/telegram.svg";
 import Reddit from "../public/reddit.svg";
-const footerImage = "/" + process.env.NEXT_PUBLIC_FOOTER_IMAGE;
+const footerImage = "/" + process.env.NEXT_PUBLIC_MAIN_IMAGE;
 
 function Main() {
 
@@ -107,21 +107,23 @@ function Main() {
         <div className="flex flex-col items-start w-full lg:w-max max-w-[550px] lg:max-w-[500px] xl:max-w-[608px]">
 
           <h2 className="text-standard mb-5 text-[32px] font-black leading-[41px]">
-            Your favorite athlete lives here
+            {process.env.NEXT_PUBLIC_MAIN_TITLE}
           </h2>
 
           <p className="text-lg leading-[27px] font-medium">
-            Blue bottle williamsburg farm-to-table cillum flexitarian. Pour-over cliche heirloom occupy semiotics kale chips.
+            {process.env.NEXT_PUBLIC_MAIN_DESCRIPTION}
           </p>
 
-          <p className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
-            Visit PWRFWD
-          </p>
+          <a href={process.env.NEXT_PUBLIC_MAIN_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
+            {process.env.NEXT_PUBLIC_MAIN_CTA_TEXT}
+          </a>
 
           <div className="mt-[34px] w-full flex items-center space-x-9">
+
             { arraySocialMedia.map( (child,index) => {
 
               const {Icon,URL} = child;
+              
               if(URL != ""){
                 
                 return(
@@ -133,7 +135,8 @@ function Main() {
                 )
               }
 
-            } ) }
+            })}
+
           </div>
 
         </div>
