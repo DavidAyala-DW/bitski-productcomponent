@@ -1,4 +1,3 @@
-import { set } from "date-fns";
 import Image from "next/image";
 import {useEffect, useState} from 'react'
 import Grid from "../public/footer_grid.svg";
@@ -8,6 +7,7 @@ import Discord from "../public/discord.svg";
 import Tiktok from "../public/tiktok.svg";
 import Telegram from "../public/telegram.svg";
 import Reddit from "../public/reddit.svg";
+const footerImage = "/" + process.env.NEXT_PUBLIC_FOOTER_IMAGE;
 
 function Main() {
 
@@ -51,10 +51,8 @@ function Main() {
 
     const image = document.createElement("IMG");
     image.classList.add("w-full","h-full");
-    image.src = "/Footer2.png";
+    image.src = footerImage;
     image.onload = () => {
-      console.log(image.height);
-      console.log(image.width);
       setHeight(image.height);
       setWidth(image.width);
       setIsLoadImage(true);
@@ -90,7 +88,7 @@ function Main() {
               isLoadImage && (
 
                 <Image
-                  src={"/Footer2.png"}
+                  src={footerImage}
                   priority={true}
                   alt="hero_image.png"
                   width={width}
