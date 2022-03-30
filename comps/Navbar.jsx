@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-const logoFileName = '/' +process.env.NEXT_PUBLIC_HERO_LOGO_FILE_NAME;
+const logoFileName = '/' +process.env.NEXT_PUBLIC_NAVBAR_LOGO;
 
 
 const Navbar = () => {
@@ -29,11 +29,11 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-6 text-[11px] text-center uppercase font-normal">
 
-          <a href="" className="text-primary">
+          <a href={process.env.NEXT_PUBLIC_NAVBAR_COLLECTION_LINK} className="text-primary">
             Collection
           </a>
 
-          <a href="" className="bg-primary px-4 py-2 text-secondary">
+          <a href={process.env.NEXT_PUBLIC_NAVBAR_WALLET_LINK} className="bg-primary buttonShape px-4 py-2.5 text-secondary">
             Link wallet
           </a>
 

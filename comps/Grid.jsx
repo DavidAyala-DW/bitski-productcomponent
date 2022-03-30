@@ -243,9 +243,9 @@ const Grid = ({ products}) => {
                   <p className="text-[10px] font-normal text-center">
                     {`SHOWIMG ${productList.length} OF ${totalProducts} PRODUCTS`}
                   </p>
-        
-                  <div className="h-1 w-full bg-gray-300">
-                    <div id="progressbar" className="h-1 w-[12%] bg-gray-600"></div>
+
+                  <div className="h-max w-full bg-transparent border border-standard ">
+                    <div id="progressbar" className="h-1 w-[12%] bg-standard"></div>
                   </div>
         
                 </div>
@@ -254,7 +254,7 @@ const Grid = ({ products}) => {
                   loadMorePages && (
         
                     <button
-                    className="bg-gray-300 text-black px-4 py-2 text-center"
+                    className="bg-primary font-light buttonShape text-[11px] text-secondary px-6 py-2.5 text-center"
                     onClick={handleClickPagination}
                     >
                       LOAD MORE

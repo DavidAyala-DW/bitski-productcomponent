@@ -18,6 +18,7 @@ module.exports = {
       $headlineFontGoogleFont: "${process.env.NEXT_PUBLIC_GOOGLEFONT_HEADLINES_FONT_FAMILY}";
       $bodyFontGoogleURL: "${process.env.NEXT_PUBLIC_GOOGLEFONT_BOY_URL}";
       $bodyFontGoogleFont: "${process.env.NEXT_PUBLIC_GOOGLEFONT_BOY_FONT_FAMILY}";
+      $buttonShape: ${ process.env.NEXT_PUBLIC_BUTTON_SHAPE != "" ? process.env.NEXT_PUBLIC_BUTTON_SHAPE : "none" };
     `,
   },
   webpack: (config) => {
