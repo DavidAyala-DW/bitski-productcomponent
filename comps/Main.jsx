@@ -114,7 +114,7 @@ function Main() {
             Blue bottle williamsburg farm-to-table cillum flexitarian. Pour-over cliche heirloom occupy semiotics kale chips.
           </p>
 
-          <p className="px-5 mt-[34px] py-2.5 bg-primary text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
+          <p className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
             Visit PWRFWD
           </p>
 

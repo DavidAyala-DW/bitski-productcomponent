@@ -265,3 +265,21 @@
   }
 
 }
+
+@function buttonShape(){
+
+  @if $buttonShape == "none" {
+    @return 0px;
+  }
+
+  @if $buttonShape == "smooth" {
+    @return 9px;
+  }
+
+  @if $buttonShape == "full" {
+    @return 49px;
+  }
+
+  @return 0px;
+
+}

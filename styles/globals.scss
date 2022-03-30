@@ -31,6 +31,9 @@ body {
   border-color: liveActionColor();
   background-color: liveActionColor();
 }
+.buttonShape{
+  border-radius: buttonShape();
+}
 
 
 h1,h2,h3,h4,h5{

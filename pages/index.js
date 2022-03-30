@@ -15,10 +15,8 @@ const Home = ({products}) => {
     <>
 
       <Head>
-
-        <title>NFT Landings demo | Home</title>
-        <meta name="keywords" content="ninjas" />
-        
+        <title>{process.env.NEXT_PUBLIC_SITE_TITLE}</title>
+        <link rel="shortcut icon" href={`/${process.env.NEXT_PUBLIC_FAVICON}`} />
       </Head>
       
       <Hero />

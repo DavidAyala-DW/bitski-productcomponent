@@ -33,7 +33,7 @@ const Navbar = () => {
             Collection
           </a>
 
-          <a href="" className="bg-primary px-4 py-2 text-secondary">
+          <a href="" className="bg-primary buttonShape px-4 py-2.5 text-secondary">
             Link wallet
           </a>
 
