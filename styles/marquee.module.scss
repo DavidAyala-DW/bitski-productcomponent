@@ -7,13 +7,12 @@
   font-weight: 900;
 }
 
-.content {
+.content{
     padding-top: 1px;
     @media screen and (min-width: 768px) {
       padding-top: 8px;
     }
 }
-
 .track {
   position: absolute;
   white-space: nowrap;
