@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import styles from "../styles/marquee.module.scss";
 
 const marqueeTextTop = process.env.NEXT_PUBLIC_HERO_MARQUEE_TEXT_TOP;
 const marqueeTextBottom = process.env.NEXT_PUBLIC_HERO_MARQUEE_TEXT_BOTTOM;
@@ -59,17 +58,16 @@ const Marquee = () => {
 
       <div className="text-2xl md:text-3xl max-w-[2500px] mx-auto">
         <div className="primary-color text-primary h-[37px] md:h-[50px]">
-
-          <div className={styles.marquee}>
-            <div className={styles.track}>
+          <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black">
+            <div className="absolute will-transform whitespace-nowrap">
               <div className="transition pt-px md:pt-2 ease-linear scroll1 space-x-2">{res1}</div>
             </div>
           </div>
 
         </div>
         <div className="secondary-color -rotate-180 marqee2 h-[37px] md:h-[50px]">
-          <div className={styles.marquee + " flex justify-center"}>
-            <div className={styles.trackReverse}>
+          <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black flex justify-center">
+            <div className="absolute will-transform whitespace-nowrap">
               <div className="transition pt-px md:pt-2 ease-linear scroll2 space-x-2">{res2} </div>
             </div>
           </div>
