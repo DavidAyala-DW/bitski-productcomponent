@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Hero from "../comps/Hero";
-import Grid from "../comps/Grid";
+import Hero from "../components/Hero";
+import Grid from "../components/Grid";
 import {useEffect} from "react";
 import { assignColors } from "../helpers";
-import Main from "../comps/Main";
+import Contact from "../components/Contact";
 
 const Home = ({products}) => {
 
@@ -23,7 +23,7 @@ const Home = ({products}) => {
 
       <Grid products={products}/>
 
-      <Main />
+      <Contact />
       
     </>
   );
