@@ -234,7 +234,7 @@ const Grid = ({ products}) => {
 
           }
 
-          {
+          {/* {
             productListActive && (
               <div className="flex flex-col space-y-5 items-center max-w-[151px] mx-auto my-5 w-full">
 
@@ -266,7 +266,7 @@ const Grid = ({ products}) => {
               </div>
 
             )
-          }
+          } */}
 
         </section>
         
