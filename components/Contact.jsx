@@ -3,7 +3,7 @@ import Image from "next/image";
 import Grid from "../public/footer_grid.svg";
 import { arraySocialMedia } from '../helpers';
 
-const footerImage = "/" + process.env.NEXT_PUBLIC_MAIN_IMAGE;
+const footerImage = "/".concat(process.env.NEXT_PUBLIC_CONTACT_IMAGE);
 
 function Contact() {
 
@@ -13,13 +13,17 @@ function Contact() {
 
   useEffect(() => {
 
-    const image = document.createElement("IMG");
-    image.classList.add("w-full","h-full");
-    image.src = footerImage;
-    image.onload = () => {
-      setHeight(image.height);
-      setWidth(image.width);
-      setIsLoadImage(true);
+    if(footerImage != "/undefined"){
+      
+      const image = document.createElement("IMG");
+      image.classList.add("w-full","h-full");
+      image.src = footerImage;
+      image.onload = () => {
+        setHeight(image.height);
+        setWidth(image.width);
+        setIsLoadImage(true);
+      }
+      
     }
 
   }, []);
@@ -44,8 +48,8 @@ function Contact() {
           `}
         </style>
 
-        <div className="h-max lg:my-auto w-full lg:max-w-[350px] xl:maxWidthFooterImage">
-          <div className="h-max w-full maxWidthFooterImage">
+        <div className="h-max lg:my-auto w-full max-w-[450px] lg:max-w-[350px] xl:max-w-[572px]">
+          <div className="h-max w-full maxWidthFooterImage xl:maxWidthFooterImage">
 
             {
 
@@ -71,15 +75,15 @@ function Contact() {
         <div className="flex flex-col items-start w-full lg:w-max max-w-[550px] lg:max-w-[500px] xl:max-w-[608px]">
 
           <h2 className="text-standard mb-5 text-[32px] font-black leading-[41px]">
-            {process.env.NEXT_PUBLIC_MAIN_TITLE}
+            {process.env.NEXT_PUBLIC_CONTACT_TITLE}
           </h2>
 
           <p className="text-lg leading-[27px] font-medium">
-            {process.env.NEXT_PUBLIC_MAIN_DESCRIPTION}
+            {process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION}
           </p>
 
-          <a href={process.env.NEXT_PUBLIC_MAIN_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
-            {process.env.NEXT_PUBLIC_MAIN_CTA_TEXT}
+          <a href={process.env.NEXT_PUBLIC_CONTACT_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
+            {process.env.NEXT_PUBLIC_CONTACT_CTA_TEXT}
           </a>
 
           <div className="mt-[34px] w-full flex items-center space-x-9">
