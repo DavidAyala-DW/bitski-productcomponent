@@ -154,7 +154,7 @@ const Grid = ({ products}) => {
   return (
 
     <>
-      <section id="grid" className="px-5 md:px-20 max-w-[1440px] mx-auto w-full my-10">
+      <section id="grid" className="px-5 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full pb-10 pt-20 md:pt-[120px]">
         
           <div className="flex-col space-y-5 max-w-[1440px] mx-auto w-full hidden">
 
@@ -200,12 +200,16 @@ const Grid = ({ products}) => {
           
           {
             productListActive && (
-              <div className="container mx-auto w-full flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+              <div className="container mx-auto w-full flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-y-10 md:gap-x-5 lg:gap-x-10">
 
                 {
 
                   productList.map((item) => (
-                    <CustomProductViewer product={item} key={hash(item.id)}/>
+
+                    <div className="max-w-[400px]" key={hash(item.id)}>
+                      <CustomProductViewer product={item}/>
+                    </div>
+                    
                   ))
 
                 }

@@ -85,6 +85,17 @@ function CustomProductViewer({ product }) {
   
   }
 
+  function getOptimizedImage(url,width,height){
+
+    const splitUrl = url.split('/');
+    const domain =  "https://cdn.bitskistatic.com/cdn-cgi/image/";
+    const settings = `width=${width},height=${height},quality=100,fit=cover,onerror=redirect,f=auto/tokens-raw/`
+    const token = splitUrl[splitUrl.length - 2]+"/"+splitUrl[splitUrl.length - 1];
+    return domain + settings + token;
+
+    
+  }
+
   useEffect( () => {
 
     const saleTypes = {
@@ -158,15 +169,15 @@ function CustomProductViewer({ product }) {
 
   return (
 
-    <div className='w-full flex flex-col items-start'>
+    <div className='w-full flex flex-col items-start select-none'>
 
       <Link href={productInfo?.purchaseLink} passHref>
         
-        <a className='w-full relative pb-[calc(100%*1)] max-h-[312px]'>
+        <a rel="noreferrer" target={"_blank"} href={productInfo?.purchaseLink} className='w-full relative pb-[calc(100%*1)]'>
 
           <div className="absolute inset-0 w-full flex flex-col justify-center items-center">
 
-            <div className='relative w-full h-full flex max-h-full justify-center max-w-full transition-transform duration-200 ease-[ease-in-out] md:hover:scale-105'>
+            <div className='relative shadow-2xl h-full w-full flex max-h-full justify-center max-w-full transition-transform duration-200 ease-[ease-in-out] md:hover:scale-105'>
 
               {
                 productInfo?.tokenMetadata?.animation_url != undefined ? (
@@ -183,12 +194,18 @@ function CustomProductViewer({ product }) {
 
                 (
 
-                  <Image
-                    className='object-cover h-full w-full object-center rounded-xl'
-                    src={productInfo?.tokenMetadata?.image}
-                    alt={productInfo?.tokenMetadata?.title}
-                    layout="fill"
-                  />
+                  <div className='w-full h-full '>
+                    <Image
+                      className='object-cover h-full w-full object-center rounded-xl'
+                      src={ getOptimizedImage(productInfo?.tokenMetadata?.image,608,608) }
+                      alt={productInfo?.tokenMetadata?.title}
+                      layout="responsive"
+                      height={608}
+                      width={608}
+                      quality={100}
+                      priority={true}
+                    />
+                  </div>
 
                 )
 
@@ -204,9 +221,9 @@ function CustomProductViewer({ product }) {
 
       <section className='w-full flex flex-col items-start'>
 
-        <div className={`flex w-full justify-between border-standard ${saleTypeStatus == "liveAt"? "liveActionColor" : ""}  ${saleTypeStatus == "closeUp" ? "closeUP text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
+        <div className={`flex w-full items-center py-2 justify-between border-standard ${saleTypeStatus == "liveAt"? "liveActionColor" : ""}  ${saleTypeStatus == "closeUp" ? "closeUP text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
 
-          <p className='flex items-center'>
+          <p className='flex text-xs font-black leading-[14.4px] items-center'>
 
             {
               saleType != "Auction" || saleTypeStatus == "normal"  ? (
@@ -236,7 +253,7 @@ function CustomProductViewer({ product }) {
             
           </p>
 
-          <p>
+          <p className="text-xs font-medium leading-[14.4px] text-right">
             {
               saleType === "Auction" || saleType === "Open edition"  ? (
 
@@ -256,13 +273,15 @@ function CustomProductViewer({ product }) {
 
         <div className='w-full flex flex-col space-y-5 items-start'>
 
-          <h2 className="text-xl leading-[1.15] font-bold ">
+          <h2 className="text-lg leading-[21px] font-medium uppercase">
             <Link href={productInfo?.purchaseLink}>
-              {productInfo?.tokenMetadata?.name}
+              <a rel="noreferrer" target={"_blank"} href={productInfo?.purchaseLink}>
+                {productInfo?.tokenMetadata?.name}
+              </a>
             </Link>
           </h2>
 
-          <h3>
+          {/* <h3 className="text-sm">
             <Link passHref href={`https://www.bitski.com/${productInfo?.username}`}>
 
               <a className='flex items-center space-x-2'>
@@ -273,6 +292,7 @@ function CustomProductViewer({ product }) {
                   alt={""}
                   width={20}
                   height={20}
+                  priority={true}
                 />
 
                 <p className='text-[#93979F] '>&#64;{productInfo?.username}</p>
@@ -280,9 +300,9 @@ function CustomProductViewer({ product }) {
               </a>
 
             </Link>
-          </h3>
+          </h3> */}
 
-          <p className='font-bold text-[1.125rem]'>
+          <p className='font-medium text-lg leading-[22px]'>
 
             {
               saleType !== "Auction" ? (
