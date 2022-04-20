@@ -154,7 +154,7 @@ const Grid = ({ products}) => {
   return (
 
     <>
-      <section id="grid" className="px-4 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full pb-20 md:pb-[128px] pt-20 md:pt-[120px]">
+      <section id="grid" className="px-4 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full pb-20 md:pb-[120px] pt-20 md:pt-[60px]">
         
           <div className="flex-col space-y-5 max-w-[1440px] mx-auto w-full hidden">
 

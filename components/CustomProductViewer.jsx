@@ -221,7 +221,7 @@ function CustomProductViewer({ product }) {
 
       <section className='w-full flex flex-col items-start'>
 
-        <div className={`flex w-full items-center py-2 justify-between border-standard ${saleTypeStatus == "liveAt"? "liveActionColor" : ""}  ${saleTypeStatus == "closeUp" ? "closeUP text-white" : ""} rounded-lg my-5 border-2 px-2 space-x-2`}>
+        <div className={`flex w-full items-center py-2 justify-between border-standard ${saleTypeStatus == "liveAt"? "liveActionColor" : ""}  ${saleTypeStatus == "closeUp" ? "closeUP text-white" : ""} rounded-lg my-5 border-2 px-3 space-x-2`}>
 
           <p className='flex text-xs font-black leading-[14.4px] items-center'>
 

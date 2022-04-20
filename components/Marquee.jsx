@@ -4,16 +4,16 @@ const marqueeTextTop = process.env.NEXT_PUBLIC_HERO_MARQUEE_TEXT_TOP;
 const marqueeTextBottom = process.env.NEXT_PUBLIC_HERO_MARQUEE_TEXT_BOTTOM;
 
 let res1 = Array.from({ length: 20 }, (_, i) => (
-  <span  key={i}>
-    <span className="uppercase">
+  <span className="h-[50px] uppercase"  key={i}>
+    <span className="h-[50px]">
         {marqueeTextTop}
     </span>
   </span>
 ));
 
 let res2 = Array.from({ length: 20 }, (_, i) => (
-  <span  key={i}>
-    <span className="uppercase">
+  <span className="h-[50px] uppercase"  key={i}>
+    <span className="h-[50px]">
         {marqueeTextBottom}
     </span>
   </span>
@@ -56,19 +56,19 @@ const Marquee = () => {
 
       `}</style>
 
-      <div className="text-[52px] max-w-[2500px] mx-auto flex flex-col space-y-5">
-        <div className="primary-color text-primary h-[70px]">
-          <div className="relative w-screen max-w-full overflow-x-hidden font-black h-[70px]">
-            <div className="absolute will-transform whitespace-nowrap h-[70px]">
-              <div className="transition pt-px md:pt-2 ease-linear scroll1 overflow-y-hidden space-x-2 h-[70px]">{res1}</div>
+      <div className="text-[50px] max-w-[2500px] mx-auto flex flex-col">
+        <div className="primary-color text-primary h-[50px] mb-1">
+          <div className="relative w-screen max-w-full overflow-x-hidden font-black h-[50px]">
+            <div className="absolute will-transform whitespace-nowrap h-[50px]">
+              <div className="transition ease-linear scroll1 overflow-y-hidden space-x-2 h-[50px] leading-[1]">{res1}</div>
             </div>
           </div>
 
         </div>
-        <div className="secondary-color -rotate-180 marqee2 h-[70px]">
-          <div className="relative w-screen max-w-full overflow-x-hidden font-black flex justify-center h-[70px]">
-            <div className="absolute will-transform whitespace-nowrap h-[70px]">
-              <div className="transition pt-px md:pt-2 ease-linear scroll2 space-x-2 overflow-y-hidden h-[70px]">{res2} </div>
+        <div className="secondary-color -rotate-180 marqee2 h-[50px]">
+          <div className="relative w-screen max-w-full overflow-x-hidden font-black flex justify-center h-[50px]">
+            <div className="absolute will-transform whitespace-nowrap h-[50px]">
+              <div className="transition ease-linear scroll2 space-x-2 overflow-y-hidden h-[50px] leading-[1]">{res2} </div>
             </div>
           </div>
         </div>
