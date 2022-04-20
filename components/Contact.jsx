@@ -142,7 +142,7 @@ function Contact() {
             {process.env.NEXT_PUBLIC_CONTACT_CTA_TEXT}
           </a>
 
-          <div className="mt-[60px] md:mt-10 w-full flex justify-center items-center space-x-10">
+          <div className="mt-[60px] md:mt-10 w-full flex justify-center md:justify-start items-center space-x-10">
 
             { arraySocialMedia.map( (child,index) => {
 
