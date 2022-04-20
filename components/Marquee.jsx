@@ -56,19 +56,19 @@ const Marquee = () => {
 
       `}</style>
 
-      <div className="text-[52px] max-w-[2500px] mx-auto">
-        <div className="primary-color text-primary h-[75px]">
-          <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black">
-            <div className="absolute will-transform whitespace-nowrap">
-              <div className="transition pt-px md:pt-2 ease-linear scroll1 space-x-2">{res1}</div>
+      <div className="text-[52px] max-w-[2500px] mx-auto flex flex-col space-y-5">
+        <div className="primary-color text-primary h-[70px]">
+          <div className="relative w-screen max-w-full overflow-x-hidden font-black h-[70px]">
+            <div className="absolute will-transform whitespace-nowrap h-[70px]">
+              <div className="transition pt-px md:pt-2 ease-linear scroll1 overflow-y-hidden space-x-2 h-[70px]">{res1}</div>
             </div>
           </div>
 
         </div>
-        <div className="secondary-color -rotate-180 marqee2 h-[75px]">
-          <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black flex justify-center">
-            <div className="absolute will-transform whitespace-nowrap">
-              <div className="transition pt-px md:pt-2 ease-linear scroll2 space-x-2">{res2} </div>
+        <div className="secondary-color -rotate-180 marqee2 h-[70px]">
+          <div className="relative w-screen max-w-full overflow-x-hidden font-black flex justify-center h-[70px]">
+            <div className="absolute will-transform whitespace-nowrap h-[70px]">
+              <div className="transition pt-px md:pt-2 ease-linear scroll2 space-x-2 overflow-y-hidden h-[70px]">{res2} </div>
             </div>
           </div>
         </div>
