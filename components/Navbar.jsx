@@ -77,7 +77,7 @@ const Navbar = () => {
 
         <div className="flex text-[11px] text-center uppercase font-normal">
 
-          <a href={CTA_LINK} className="bg-primary text-xs font-normal buttonShape px-4 py-2.5 md:px-[60px] md:py-3 text-secondary uppercase">
+          <a href={CTA_LINK} className="transition hover:scale-105 cursor-pointer bg-primary text-xs font-normal buttonShape px-4 py-2.5 md:px-[60px] md:py-3 text-secondary uppercase">
             {CTA_TEXT}
           </a>
 
