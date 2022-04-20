@@ -56,8 +56,8 @@ const Marquee = () => {
 
       `}</style>
 
-      <div className="text-2xl md:text-3xl max-w-[2500px] mx-auto">
-        <div className="primary-color text-primary h-[37px] md:h-[50px]">
+      <div className="text-[52px] max-w-[2500px] mx-auto">
+        <div className="primary-color text-primary h-[75px]">
           <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black">
             <div className="absolute will-transform whitespace-nowrap">
               <div className="transition pt-px md:pt-2 ease-linear scroll1 space-x-2">{res1}</div>
@@ -65,7 +65,7 @@ const Marquee = () => {
           </div>
 
         </div>
-        <div className="secondary-color -rotate-180 marqee2 h-[37px] md:h-[50px]">
+        <div className="secondary-color -rotate-180 marqee2 h-[75px]">
           <div className="relative w-screen max-w-full h-full overflow-x-hidden font-black flex justify-center">
             <div className="absolute will-transform whitespace-nowrap">
               <div className="transition pt-px md:pt-2 ease-linear scroll2 space-x-2">{res2} </div>
