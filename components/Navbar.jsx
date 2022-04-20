@@ -47,7 +47,7 @@ const Navbar = () => {
         </style>
       </div> */}
 
-      <div className="flex item-center w-full max-w-[1440px] px-5 md:px-10 lg:px-20 mx-auto justify-between flex-wrap">
+      <div className="flex item-center w-full max-w-[1440px] px-4 md:px-10 lg:px-20 mx-auto justify-between flex-wrap">
 
         <Link href="/" passHref>
 
