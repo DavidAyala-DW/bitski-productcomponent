@@ -86,7 +86,7 @@ function Contact() {
 
       {
         screenType == "desktop" && (
-          <GridDesktop className="absolute inset-0 stroke-primary !w-full h-full lg:max-h-[588px] lg:max-w-[722px] lg:static opacity-40 translate-x-[-310px]" />  
+          <GridDesktop className="absolute inset-0 stroke-primary !w-full h-full lg:max-h-[588px] lg:max-w-[722px] lg:static opacity-40 translate-x-[-317px]" />  
         )
       }
 
@@ -138,7 +138,7 @@ function Contact() {
             {process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION}
           </p>
 
-          <a href={process.env.NEXT_PUBLIC_CONTACT_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-11 w-full md:w-max mt-10 py-3 bg-primary buttonShape text-secondary text-center uppercase font-medium text-[12px] leading-[14px]">
+          <a href={process.env.NEXT_PUBLIC_CONTACT_CTA_LINK} rel="noreferrer" target={"_blank"} className="transition hover:scale-105 cursor-pointer px-11 w-full md:w-max mt-10 py-3 bg-primary buttonShape text-secondary text-center uppercase font-medium text-[12px] leading-[14px]">
             {process.env.NEXT_PUBLIC_CONTACT_CTA_TEXT}
           </a>
 
@@ -152,7 +152,7 @@ function Contact() {
                 
                 return(
 
-                  <a className="block" rel="noreferrer" target={"_blank"} href={URL} key={index}>
+                  <a className="transition hover:scale-125 cursor-pointer block" rel="noreferrer" target={"_blank"} href={URL} key={index}>
                     <Icon className="fill-primary" />
                   </a>
                   
