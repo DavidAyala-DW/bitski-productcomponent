@@ -10,9 +10,9 @@ const Footer = () => {
 
       <p className="text-standard  tracking-[0.16em] uppercase text-[11px] font-semibold">Powered By</p>
 
-      <div>
+      <a className="block cursor-pointer" target="_blank" href="https://www.bitski.com/" rel="nofollow noreferrer">
         <Bitski className="logoBitski" />
-      </div>
+      </a>
 
 
     </footer>
