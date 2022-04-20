@@ -70,7 +70,7 @@ function Contact() {
 
   return (
 
-    <section className='mt-20 lg:mt-0 pt-[88px] lg: md:px-10 lg:px-0 mb-40 md:mb-[120px] md:pb-[175px] max-w-[1440px] mx-auto w-full h-full lg:min-h-full relative overflow-hidden'>
+    <section className=' lg:mt-0 lg: md:px-10 lg:px-0 mb-40 md:mb-[120px] pt-[88px] lg:pt-0 md:pb-[175px] lg:pb-0 max-w-[1440px] mx-auto w-full h-full lg:min-h-full relative overflow-hidden'>
 
       {
         screenType == "mobile" && (

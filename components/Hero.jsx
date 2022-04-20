@@ -21,6 +21,9 @@ const Hero = () => {
   const [screenType, setScreenType] = useState("");
   const ImageTagHero = useRef(null);
 
+  console.log(maxHeight);
+
+
   useEffect(() => {
 
     if(imageHero != "/undefined"){
@@ -92,7 +95,7 @@ const Hero = () => {
             }
             @media(min-width: 1024px){
               .lg\:heightHero{
-                height: ${(maxHeight + 238) ?? 600}px;
+                height: ${(maxHeight + 308) ?? 600}px;
             } 
             }
           `}
@@ -128,7 +131,7 @@ const Hero = () => {
 
           <div className="static lg:absolute lg:top-0 px-4 md:px-20 lg:right-0 w-full h-max ml-auto z-20" id="hero_content">
 
-              <div className="pt-[136px] md:pt-[148px] lg:pt-[168px] w-full h-full flex flex-col space-y-10 lg:space-y-0 lg:flex-row items-center lg:items-start justify-between">
+              <div className="pt-[136px] md:pt-[148px] lg:pt-[168px] w-full h-full flex flex-col space-y-10 lg:space-y-0 lg:flex-row items-center lg:items-center justify-between">
 
                 <div className="flex flex-col space-y-6 max-w-[560px] lg:max-w-[487px] lg:pr-5">
 
