@@ -4,7 +4,7 @@ import Marquee from "./Marquee";
 
 import HeroGridDesktop from "../public/HeroGridDesktop.svg";
 import HeroGridIpad from "../public/HeroGridIpad.svg";
-import HeroGridMobile from "../public/heroGridMobile.svg";
+import HeroGridMobile from "../public/HeroGridMobile.svg";
 
 
 const title = process.env.NEXT_PUBLIC_HERO_TITLE ?? "";
