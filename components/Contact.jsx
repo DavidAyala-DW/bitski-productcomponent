@@ -1,6 +1,10 @@
 import {useEffect, useState} from 'react'
 import Image from "next/image";
-import Grid from "../public/footer_grid.svg";
+
+import GridMobile from "../public/contact_grid_mobile.svg";
+import GridIpad from "../public/contact_grid_ipad.svg";
+import GridDesktop from "../public/contact_grid_desktop.svg";
+
 import { arraySocialMedia } from '../helpers';
 
 const footerImage = "/".concat(process.env.NEXT_PUBLIC_CONTACT_IMAGE);
@@ -10,6 +14,7 @@ function Contact() {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [isLoadImage, setIsLoadImage] = useState(false);
+  const [screenType, setScreenType] = useState("");
 
   useEffect(() => {
 
@@ -26,15 +31,66 @@ function Contact() {
       
     }
 
+    if(typeof window !== "undefined"){
+
+      function handleResizeEvent(){
+
+        if(window.innerWidth < 768){
+          setScreenType("mobile")
+        }
+
+        if(window.innerWidth >= 768 && window.innerWidth < 1080){
+          setScreenType("ipad")
+        }
+
+        if(window.innerWidth >= 1080){
+          setScreenType("desktop")
+        }
+
+      }
+
+      if(window.innerWidth < 768){
+        setScreenType("mobile")
+      }
+
+      if(window.innerWidth >= 768 && window.innerWidth < 1080){
+        setScreenType("ipad")
+      }
+
+      if(window.innerWidth >= 1080){
+        setScreenType("desktop")
+      }
+   
+      window.addEventListener("resize", handleResizeEvent);
+      return window.removeEventListener("resize",handleResizeEvent,true);
+
+    }
+
   }, []);
 
   return (
 
-    <div className='my-20 max-w-[1440px] mx-auto w-full h-full lg:min-h-full relative overflow-hidden'>
+    <section className='mt-20 lg:mt-0 pt-[88px] lg: md:px-10 lg:px-0 mb-40 md:mb-[120px] md:pb-[175px] max-w-[1440px] mx-auto w-full h-full lg:min-h-full relative overflow-hidden'>
 
-      <Grid className="absolute inset-0 stroke-primary !w-full h-full lg:max-h-[588px] lg:max-w-[722px] lg:static opacity-40 translate-x-[-310px]" />  
+      {
+        screenType == "mobile" && (
+          <GridMobile className="transform translate-x-[-100px] absolute inset-0 stroke-primary !w-full h-full" />
+        )
+      }
 
-      <div className="lg:absolute px-5 lg:px-20 xl:px-0 lg:inset-0 w-full max-w-max mx-auto lg:max-w-[1260px] space-y-5 lg:space-y-0 lg:justify-between h-full lg:max-h-[498px] my-auto z-10 flex flex-col lg:flex-row items-start lg:items-center">
+      {
+        screenType == "ipad" && (
+          <GridIpad className="absolute inset-0 stroke-primary !w-full h-full" />
+        )
+      }
+
+      {
+        screenType == "desktop" && (
+          <GridDesktop className="absolute inset-0 stroke-primary !w-full h-full lg:max-h-[588px] lg:max-w-[722px] lg:static opacity-40 translate-x-[-310px]" />  
+        )
+      }
+
+      <div className="lg:absolute px-4 lg:px-20 lg:inset-0 w-full max-w-max md:max-w-full mx-auto lg:max-w-[1440px] space-y-5 lg:space-y-0 md:justify-between lg:justify-start lg:space-x-[160px] h-full lg:max-h-[498px] my-auto z-10 flex flex-col md:flex-row items-start md:items-center">
 
         <style jsx>{`
             .maxWidthFooterImage{
@@ -48,7 +104,7 @@ function Contact() {
           `}
         </style>
 
-        <div className="h-max lg:my-auto w-full max-w-[450px] lg:max-w-[350px] xl:max-w-[572px]">
+        <div className="h-max lg:my-auto w-full max-w-[450px] md:max-w-[342px] lg:max-w-[350px] xl:max-w-[572px] z-20">
           <div className="h-max w-full maxWidthFooterImage xl:maxWidthFooterImage">
 
             {
@@ -72,21 +128,21 @@ function Contact() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start w-full lg:w-max max-w-[550px] lg:max-w-[500px] xl:max-w-[608px]">
+        <div className="flex flex-col items-start w-full md:max-w-[365px]  lg:max-w-[500px] xl:max-w-[608px] z-20">
 
-          <h2 className="text-standard mb-5 text-[32px] font-black leading-[41px]">
+          <h2 className="text-standard mb-6 leading-[32px] text-[32px] lg:text-[52px] font-black lg:leading-[52px]">
             {process.env.NEXT_PUBLIC_CONTACT_TITLE}
           </h2>
 
-          <p className="text-lg leading-[27px] font-medium">
+          <p className="text-base leading-[25px] font-medium">
             {process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION}
           </p>
 
-          <a href={process.env.NEXT_PUBLIC_CONTACT_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-5 mt-[34px] py-2.5 bg-primary buttonShape text-secondary text-center uppercase font-light text-[11px] leading-[14px]">
+          <a href={process.env.NEXT_PUBLIC_CONTACT_CTA_LINK} rel="noreferrer" target={"_blank"} className="px-11 w-full md:w-max mt-10 py-3 bg-primary buttonShape text-secondary text-center uppercase font-medium text-[12px] leading-[14px]">
             {process.env.NEXT_PUBLIC_CONTACT_CTA_TEXT}
           </a>
 
-          <div className="mt-[34px] w-full flex items-center space-x-9">
+          <div className="mt-[60px] md:mt-10 w-full flex justify-center items-center space-x-10">
 
             { arraySocialMedia.map( (child,index) => {
 
@@ -111,7 +167,7 @@ function Contact() {
 
       </div>
 
-    </div>
+    </section>
 
   )
 

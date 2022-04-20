@@ -1,7 +1,10 @@
 import {useEffect, useState, useRef} from 'react'
 import Image from "next/image";
 import Marquee from "./Marquee";
-import HeroGrid from "../public/hero_grid.svg";
+
+import HeroGridDesktop from "../public/HeroGridDesktop.svg";
+import HeroGridIpad from "../public/HeroGridIpad.svg";
+import HeroGridMobile from "../public/heroGridMobile.svg";
 
 
 const title = process.env.NEXT_PUBLIC_HERO_TITLE ?? "";
@@ -15,6 +18,7 @@ const Hero = () => {
   const [maxHeight, setMaxHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [isLoadImage, setIsLoadImage] = useState(false);
+  const [screenType, setScreenType] = useState("");
   const ImageTagHero = useRef(null);
 
   useEffect(() => {
@@ -40,11 +44,35 @@ const Hero = () => {
 
       function handleResizeEvent(){
 
-        if(ImageTagHero == null)  return;
+        // if(ImageTagHero == null)  return;
+
+        if(window.innerWidth < 768){
+          setScreenType("mobile")
+        }
+
+        if(window.innerWidth >= 768 && window.innerWidth < 1080){
+          setScreenType("ipad")
+        }
+
+        if(window.innerWidth >= 1080){
+          setScreenType("desktop")
+        }
 
         const {current: {offsetHeight: maxHeightValue}} = ImageTagHero;
         setMaxHeight(maxHeightValue);
 
+      }
+
+      if(window.innerWidth < 768){
+        setScreenType("mobile")
+      }
+
+      if(window.innerWidth >= 768 && window.innerWidth < 1080){
+        setScreenType("ipad")
+      }
+
+      if(window.innerWidth >= 1080){
+        setScreenType("desktop")
       }
    
       window.addEventListener("resize", handleResizeEvent);
@@ -52,7 +80,7 @@ const Hero = () => {
 
     }
 
-  }, [maxHeight]);
+  }, []);
 
   return (
     <>
@@ -71,27 +99,44 @@ const Hero = () => {
         </style>
       </div>
 
-      <section className={` heightHero ${maxHeight == 0 ? "lg:!h-[600px]" : "lg:heightHero"} pb-5 lg:pb-[130px] w-full`}>
+      <section className={` heightHero ${maxHeight == 0 ? "lg:!h-[600px]" : "lg:heightHero"} pb-20 md:pb-[120px] lg:pb-[140px] w-full`}>
 
         <div className=" h-full mx-auto relative max-w-[1440px] overflow-hidden">
 
           <div className="absolute top-0 right-0 w-max h-max ml-auto">  
 
-            <HeroGrid className="stroke-primary w-full h-max opacity-30" />
+            {
+              screenType == "mobile" && (
+                <HeroGridMobile className="mobile stroke-primary w-full h-max"/>
+              )
+            }
+
+            {
+              screenType == "ipad" && (
+                <HeroGridIpad className="ipad stroke-primary w-full h-max"/>
+              )
+            }
+
+            {
+              screenType == "desktop" && (
+                <HeroGridDesktop className="desktop stroke-primary w-full h-max"/>
+              )
+            }
+            
 
           </div>
 
-          <div className="static lg:absolute lg:top-0 px-5 md:px-20 lg:right-0 w-full h-max ml-auto z-20 mb-5" id="hero_content">
+          <div className="static lg:absolute lg:top-0 px-4 md:px-20 lg:right-0 w-full h-max ml-auto z-20" id="hero_content">
 
-              <div className="lg:pt-[108px] w-full h-full flex flex-col space-y-10 lg:space-y-0 lg:flex-row items-center lg:items-start justify-between">
+              <div className="pt-[136px] md:pt-[148px] lg:pt-[168px] w-full h-full flex flex-col space-y-10 lg:space-y-0 lg:flex-row items-center lg:items-start justify-between">
 
-                <div className="flex flex-col space-y-5 lg:space-y-9 mt-[124px] max-w-[610px] lg:pr-5">
+                <div className="flex flex-col space-y-6 max-w-[560px] lg:max-w-[487px] lg:pr-5">
 
-                  <h1 className="font-bold text-2xl lg:text-[40px] xl:text-[55px] lg:leading-[62.26px]">
+                  <h1 className="z-20 font-extrabold md:font-black text-[52px] md:text-center lg:text-left leading-[52px] md:text-[64px] md:leading-[64px]">
                     {title}
                   </h1>
 
-                  <p className="max-w-[536px]">
+                  <p className="z-20 md:text-center lg:text-left text-base leading-[25.6px]">
                     {description}
                   </p>
 
@@ -109,7 +154,7 @@ const Hero = () => {
                 `}
                 </style>
 
-                <div className='w-full max-w-[600px]' ref={ImageTagHero}>
+                <div className='z-20 w-full md:max-w-[365px] lg:max-w-[630px]' ref={ImageTagHero}>
 
                   <div className="ml-auto maxWidthHeroImage xl:maxWidthHeroImage relative h-max w-full">
 
