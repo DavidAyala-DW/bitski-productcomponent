@@ -200,23 +200,30 @@ const Grid = ({ products}) => {
           
           {
             productListActive && (
-              <div className="container mx-auto w-full flex flex-col items-center md:items-startt space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-y-10 md:gap-x-5 lg:gap-x-10">
+
+              <div className="mx-auto w-full flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 md:gap-y-10 lg:gap-x-10">
 
                 {
 
-                  productList.map((item) => (
+                  productList.map((item) => {
 
-                    <div className="w-full max-w-[400px]" key={hash(item.id)}>
-                      <CustomProductViewer product={item}/>
-                    </div>
-                    
-                  ))
+                    if(Object.entries(item).length > 1){
+                      return (
+                        <CustomProductViewer product={item} key={hash(item.id)}/>
+                      )
+                    }else{
+                      console.log(`The id ${item.id} doesn't exists or is wrong`);
+                    }
+
+                  })
 
                 }
 
               </div>
+
             )
           }
+
 
           {
 
